@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    background-color: #FAEBD7
+ 
+  }
+  
+  .navbar li {
+    margin-bottom: 10px;
+  }
+  
+  @media(min-width: 768px) {
+    .navbar {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      list-style: none;
+     
+    }
+    .navbar li {
+      margin: 0 10px;
+    }
+  }
+  
+  @media(min-width: 992px) {
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0;
+    }
+    .navbar li {
+      margin: 0 0 0 20px;
+    }
+  }
+  

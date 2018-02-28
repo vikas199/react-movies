@@ -1,0 +1,11 @@
+.searchBar {
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    width: 90%;
+    padding: 20px 0 20px 40px;
+    border: 1px solid #bdbdbd;
+    align-items: center;
+    color: #000;
+    outline: none;
+    transition: all 0.35s ease-out;
+}

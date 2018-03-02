@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route, Switch } from 'react-router-dom';
 import Movies from './movies/movies'
+import Main from './books/index'
 import MovieDetail from './movieDetail/MovieDetail'
 
 import Header from '../components/header/header'
@@ -15,6 +16,7 @@ class App extends Component {
           
           <Route path={'/movie/:id'} component={MovieDetail} />
           <Route path="/movies" component={Movies} />
+          <Route path="/books" component={Main} />
           <Route path="/" exact component={Header}/>
          </Switch>
    

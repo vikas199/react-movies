@@ -1,0 +1,52 @@
+.search{
+    width:20%;
+    border:solid;
+}
+
+.searchList {
+    border: solid;
+    display: flex;
+    justify-content: center;
+   margin: 5px;
+}
+.card {
+   margin: 10px;
+   height: 200px;
+   width:100%;
+   box-shadow: 5px 5px 5px gray;
+   background-color: #A9A9A9;
+   overflow: auto;
+}
+.card img{
+    box-shadow: 5px 5px 5px gray;
+}
+.card-body {
+    display: flex;
+}
+.details {
+padding: 5px;
+}
+
+.details p{
+display: flex;
+font-size: 12px;
+word-break: keep-all;
+text-align: justify;
+
+}
+.description{
+    width:auto;
+    text-align: justify;
+ 
+ 
+
+}
+.description p{
+    font-size: 12px;
+    float: left;
+    word-break: keep-all;
+ 
+}
+.form-control{
+    width: 50px;
+}

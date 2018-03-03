@@ -1,16 +1,16 @@
 import * as Constants from '../Constants';
 
 export const fetchBooksStart = () => {
-    return{
+    return {
         type: Constants.FETCH_BOOKS_START
     }
 }
 
 export const fetchBooksSuccess = (results) => {
-    return{
+    return {
         type: Constants.FETCH_BOOKS_SUCCESS,
-        results:results
-       
+        results: results
+
     }
 }
 
@@ -23,12 +23,26 @@ export const fetchBooksSuccess = (results) => {
 export const fetchBooksFail = (error) => {
     return {
         type: Constants.FETCH_BOOKS_ERROR,
-        error:error
+        error: error
     }
 }
 
-export const fetchBooksInit = (lastSearchQuery, startIndex, maxResults) =>{
-    return{
+export const onInputChange = (searchTerm) => {
+    return {
+           type: Constants.INPUT_VLAUE_CHANGE,
+           payload: searchTerm
+    }
+}
+
+export const onMaxResults = (maxResults) => {
+    return {
+        type: Constants.MAX_RESULTS,
+        payload: maxResults
+    }
+}
+
+export const fetchBooksInit = (lastSearchQuery, startIndex, maxResults) => {
+    return {
         type: Constants.FETCH_BOOKS_INIT,
         lastSearchQuery,
         startIndex,

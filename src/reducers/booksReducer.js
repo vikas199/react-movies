@@ -2,7 +2,7 @@ import * as Constants from '../Constants'
 
 const initialState = {
     searchTerm:'',
-    maxResults:5,
+    //maxResults: 5,
     loading: false,
     error: null,
     booksResults: []
@@ -10,11 +10,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case Constants.MAX_RESULTS:
-        return{
-            ...state,
-            maxResults: action.payload
-        }
+        // case Constants.MAX_RESULTS:
+        // return{
+        //     ...state,
+        //     maxResults: action.maxResults
+        // }
         case Constants.INPUT_VLAUE_CHANGE:
         return{
             ...state,

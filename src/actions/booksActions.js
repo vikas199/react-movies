@@ -34,12 +34,12 @@ export const onInputChange = (searchTerm) => {
     }
 }
 
-export const onMaxResults = (maxResults) => {
-    return {
-        type: Constants.MAX_RESULTS,
-        payload: maxResults
-    }
-}
+// export const onMaxResults = (maxResults) => {
+//     return {
+//         type:Constants.MAX_RESULTS,
+//         payload: ma
+//     }
+// }
 
 export const fetchBooksInit = (lastSearchQuery, startIndex, maxResults) => {
     return {

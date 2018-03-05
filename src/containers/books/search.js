@@ -11,7 +11,7 @@ class Search extends Component {
         maxResults: 5
     }
     handleChange = (event) => {
-       this.props.onInputChange()
+       this.props.onInputChange(event.target.value)
     }
 
     handleResults = (event) => {
@@ -30,7 +30,6 @@ class Search extends Component {
            }
     }
     render() {
-        console.log(this.props.books)
         let bookDetails = null;
         if (this.props.books) {
             bookDetails = this.props.books.map(book => {
@@ -52,7 +51,6 @@ class Search extends Component {
 
 const mapStateToProps = state => {
     return {
-        maxResults: state.booksReducer.maxResults,
         searchTerm: state.booksReducer.searchTerm,
         loading: state.booksReducer.loading,
         books: state.booksReducer.booksResults
@@ -63,7 +61,7 @@ const mapDispatchToProps = dispatch => {
     return {
         books_fetch: (lastSearchQuery, startIndex, maxResults) => dispatch(actions.fetchBooksInit(lastSearchQuery, startIndex, maxResults)),
         onInputChange: (searchTerm) => dispatch(actions.onInputChange(searchTerm)),
-        onMaxResults: (maxResults) => dispatch(actions.onMaxResults(maxResults))
+       
     }
 }
 

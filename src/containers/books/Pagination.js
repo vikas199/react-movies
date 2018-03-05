@@ -3,7 +3,7 @@ import './search.css'
 
 const Pagination = (props) => {
     return(
-        < select className='form-control' value={props.maxResults} onChange={props.onChange}>
+        < select className='form-control' onChange={props.onChange}>
         <option value='5'>5</option>
         <option value='10'>10</option>
         <option value='15'>15</option>

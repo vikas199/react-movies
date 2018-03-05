@@ -88,7 +88,7 @@ const mapDispatchToProps = dispatch => {
     return {
         books_fetch: (lastSearchQuery, startIndex, maxResults) => dispatch(actions.fetchBooksInit(lastSearchQuery, startIndex, maxResults)),
         onInputChange: (searchTerm) => dispatch(actions.onInputChange(searchTerm)),
-        onMaxResults: (maxResults) => dispatch(actions.onMaxResults(maxResults))
+       
     }
 }
 

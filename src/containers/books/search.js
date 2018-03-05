@@ -1,50 +1,76 @@
 import React, { Component } from 'react'
 import SearchList from './searchList'
 import * as actions from '../../actions/booksActions'
-import Pagination from './Pagination'
+//import Pagination from './Pagination'
 import { connect } from 'react-redux';
 import './search.css'
 
 class Search extends Component {
     state = {
         startIndex: 0,
-        maxResults: 5
+        maxResults: 40,
+        currentPage: 1,
+        booksPerPage: 5
     }
     handleChange = (event) => {
-       this.props.onInputChange()
+       this.props.onInputChange(event.target.value)
     }
 
-    handleResults = (event) => {
-        this.setState({ maxResults: event.target.value })
-
+    handlePageChange = event => {
+        this.setState({ currentPage: Number(event.target.id)})
     }
+
+    // handleResults = (event) => {
+    //     this.setState({ maxResults: event.target.value })
+
+    // }
 
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.books_fetch(this.props.searchTerm, this.state.startIndex, this.state.maxResults);
     }
 
-    componentDidUpdate(prevProps, prevState){
-           if(this.state.maxResults !== prevState.maxResults){
-              this.props.books_fetch(this.props.searchTerm, this.state.startIndex, this.state.maxResults)
-           }
-    }
+    // componentDidUpdate(prevProps, prevState){
+    //        if(this.state.maxResults !== prevState.maxResults){
+    //           this.props.books_fetch(this.props.searchTerm, this.state.startIndex, this.state.maxResults)
+    //        }
+    // }
     render() {
+        console.log(this.state.cu)
+        const { currentPage, booksPerPage } = this.state;
+        const indexOfLastBook = currentPage *  booksPerPage;
+        const indexOfFirstBook = indexOfLastBook - booksPerPage;
+        const currentBooks = this.props.books.slice(indexOfFirstBook, indexOfLastBook)
         console.log(this.props.books)
         let bookDetails = null;
         if (this.props.books) {
-            bookDetails = this.props.books.map(book => {
+            bookDetails = currentBooks.map((book, index) => {
                 return <SearchList book={book} key={book.id} />
             })
         }
+        const pageNumbers = [];
+        for(let i = 1; i<= Math.ceil(this.props.books.length / booksPerPage); i++){
+            pageNumbers.push(i)
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            return(
+                <li key={number} id={number} onClick={this.handlePageChange} 
+                className="page-item">{number}</li>
+            )
+        })
         return (
             <div>
                 <div className="searchList">
                     <input onChange={this.handleChange} />
-                    <Pagination value={this.state.maxResults} onChange={this.handleResults} />
                     <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                 </div>
                 {bookDetails}
+                <div>
+                <ul className="pagination">
+                {renderPageNumbers}
+                </ul>
+                </div>
             </div>
         )
     }
@@ -52,7 +78,6 @@ class Search extends Component {
 
 const mapStateToProps = state => {
     return {
-        maxResults: state.booksReducer.maxResults,
         searchTerm: state.booksReducer.searchTerm,
         loading: state.booksReducer.loading,
         books: state.booksReducer.booksResults

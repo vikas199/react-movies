@@ -9,6 +9,8 @@
     justify-content: center;
    margin: 5px;
 }
+
+
 .card {
    margin: 10px;
    height: 200px;
@@ -50,3 +52,22 @@ text-align: justify;
 .form-control{
     width: 50px;
 }
+.pagination {
+   justify-content: center;
+   width: auto;
+ 
+  
+}
+.pagination li{
+    margin: 0px;
+    border: solid 1px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.pagination li active {
+    background-color: #4CAF50;
+    border: solid;
+    border-radius: 5px;
+}
+

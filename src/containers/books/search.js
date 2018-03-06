@@ -2,16 +2,10 @@ import React, { Component } from 'react'
 import SearchList from './searchList'
 import * as actions from '../../actions/booksActions'
 import Paginations from './Pagination'
-import {Pagination, PaginationItem, PaginationLink} from 'reactstrap'
+//import {Pagination, PaginationItem, PaginationLink} from 'reactstrap'
 import { connect } from 'react-redux';
 import './search.css'
 
-
-
-let prev=0;
-let next=0;
-let last=0;
-let first=0;
 
 class Search extends Component {
     state = {
@@ -26,15 +20,9 @@ class Search extends Component {
 
     handlePageChange = (event) => {
         this.setState({ currentPage: Number(event.target.id)})
+       
     }
-    handleLastClick(event){
-        event.preventDefault();
-        this.setState({currentPage: last})
-    }
-    handleFirstClick = (event) => {
-        event.preventDefault();
-        this.setState({currentPage: 1})
-    }
+
 
     handleResults = (event) => {
         this.setState({ maxResults: event.target.value })
@@ -56,9 +44,7 @@ class Search extends Component {
         const indexOfLastBook = currentPage *  booksPerPage;
         const indexOfFirstBook = indexOfLastBook - booksPerPage;
         const currentBooks = this.props.books.slice(indexOfFirstBook, indexOfLastBook)
-        prev = currentPage > 0 ? (currentPage -1) : 0;
-        last = Math.ceil(this.props.books.length / booksPerPage)
-        next = (last === currentPage) ? currentPage: currentPage+1
+
         console.log(this.props.books)
         let bookDetails = null;
         if (this.props.books) {
@@ -66,6 +52,7 @@ class Search extends Component {
                 return <SearchList book={book} key={book.id} />
             })
         }
+
         const pageNumbers = [];
         for(let i = 1; i<= Math.ceil(this.props.books.length / booksPerPage); i++){
             pageNumbers.push(i)
@@ -73,9 +60,11 @@ class Search extends Component {
 
         const renderPageNumbers = pageNumbers.map(number => {
             return(
-               <li>{number}</li>
+               <li key={number} id={number} onClick={this.handlePageChange}>{number}</li>
             )
         })
+
+     
         return (
             <div>
                 <div className="searchList">
